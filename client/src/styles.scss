@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer component {
+    .main-container {
+        @apply max-w-7xl m-auto w-full px-4
+    }
+
+    .upper-spacing {
+        @apply mt-4
+    }
+}
