@@ -1,0 +1,35 @@
+<div class="main-container">
+    <div class="content">
+        <!-- Add Topic -->
+        <div>
+            <button type="button" (click)="isAddNewTopicMode = !isAddNewTopicMode"
+                class="text-white bg-gray-800 hover:bg-gray-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+                Add Topic
+                <span *ngIf="!isAddNewTopicMode" class="material-icons ml-1">arrow_drop_down</span>
+                <span *ngIf="isAddNewTopicMode" class="material-icons ml-1">arrow_drop_up</span>
+            </button>
+            <!-- Drop down menu -->
+            <div *ngIf="isAddNewTopicMode" class="bg-gray-200 rounded-lg shadow-lg mt-2 py-2 px-4">
+                <div class="flex flex-row gap-2">
+                    <input class="h-full w-full rounded-lg border px-3 py-2.5 text-sm font-normal"
+                        placeholder="New Topic Title" />
+                    <button type="button" (click)="saveNewTopic()"
+                        class="bg-green-100 hover:bg-green-200 text-gray-800 font-semibold pt-1 px-8 rounded-lg h-auto w-fit">
+                        <span class="material-icons text-center">check</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="upper-spacing border border-gray-100 rounded-lg p-2">
+            <h3 class="font-bold text-lg mb-2">Topic overview</h3>
+            <app-topic-blog-table></app-topic-blog-table>
+        </div>
+    </div>
+    <div class="fixed right-0 bottom-0 m-8">
+        <button type="button"
+            class="text-white bg-gray-800 hover:bg-gray-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+            Submit changes
+            <span class="material-icons ml-1">save_alt</span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="main-container">
+    <div class="content">
+        <!-- Tab Selection -->
+        <div class="mb-2">
+            <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200">
+                <ul class="flex flex-wrap -mb-px">
+                    <li class="me-2">
+                        <button (click)="activateTab('create')"
+                            [ngClass]="{'text-gray-800 border-gray-800' : currentTab === 'create', 'border-transparent hover:border-gray-300' : currentTab !== 'create'}"
+                            class="inline-block p-4 hover:text-gray-600 border-b-2 rounded-t-lg active">Create
+                            new blog post</button>
+                    </li>
+                    <li class="me-2">
+                        <button (click)="activateTab('manage')"
+                            [ngClass]="{'text-gray-800 border-gray-800' : currentTab === 'manage', 'border-transparent hover:border-gray-300' : currentTab !== 'manage'}"
+                            class="inline-block p-4 hover:text-gray-600 border-b-2 rounded-t-lg active">Manage
+                            blog posts</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tab 01 -->
+        <div *ngIf="currentTab === 'create'" class="upper-spacing-x2">
+            <div>
+                <form [formGroup]="addBlogPostForm" (ngSubmit)="onSubmit()">
+                    <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+                        <div>
+                            <label for="blog-post-title"
+                                class="block text-sm font-semibold leading-6 text-gray-900">Blog Post Title</label>
+                            <div class="mt-2.5">
+                                <input formControlName="blogPostTitle" type="text" name="blog-post-title"
+                                    id="blog-post-title"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-secondary sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="blog-post-content"
+                                class="block text-sm font-semibold leading-6 text-white-900">Blog Post Content</label>
+                            <div class="mt-2.5">
+                                <textarea formControlName="blogPostContent" name="blog-post-content" id="blog-post-content" rows="4"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-secondary sm:text-sm sm:leading-6"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 sm:mt-12">
+                       <!--  <button [disabled]="!addBlogPostForm.valid" type="submit"
+                            class="block w-full rounded-md bg-white px-3.5 py-2.5 border border-gray-300 text-center text-sm font-semibold text-gray-800 shadow-sm enabled:hover:bg-secondary-light enabled:focus-visible:outline enabled:focus-visible:outline-2 enabled:focus-visible:outline-offset-2">Senden</button> -->
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <!--Tab 02-->
+        <div *ngIf="currentTab === 'manage'" class="upper-spacing-x2">
+            <!-- Topic Table -->
+            <div class="border border-gray-100 rounded-lg p-2">
+                <h3 class="font-bold text-lg mb-2">Topic overview</h3>
+                <app-topic-blog-table></app-topic-blog-table>
+            </div>
+        </div>
+    </div>
+    <div class="fixed left-0 bottom-0 m-8">
+        <button type="button"
+            class="text-white bg-gray-800 hover:bg-gray-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+            Preview
+            <span class="material-icons ml-1">remove_red_eye</span>
+        </button>
+    </div>
+    <div class="fixed right-0 bottom-0 m-8">
+        <button type="button"
+            class="text-white bg-gray-800 hover:bg-gray-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+            Submit changes
+            <span class="material-icons ml-1">save_alt</span>
+        </button>
+    </div>
+</div>

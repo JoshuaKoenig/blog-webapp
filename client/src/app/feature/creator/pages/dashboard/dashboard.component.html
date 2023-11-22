@@ -1,0 +1,28 @@
+<div class="main-container">
+    <div class="content">
+        <div class="grid grid-cols-2 gap-8 justify-items-stretch">
+            <!-- Card 01 -->
+            <app-dashboard-card [cardTitle]="'Website Design'"
+                [cardSubTitle]="'Design your blog website. Customise your website according to your needs.'"
+                [cardIcon]="'brush'">
+
+            </app-dashboard-card>
+            <!-- Card 01 -->
+            <app-dashboard-card [cardTitle]="'Manage Topics'"
+                [cardSubTitle]="'Manage all your topics: Create, customise, delete'"
+                [cardIcon]="'topic'"
+                [routerLink]="'manage-topics'"
+                ></app-dashboard-card>
+            <!-- Card 01 -->
+            <app-dashboard-card [cardTitle]="'Manage Blogs'"
+                [cardSubTitle]="'Manage all your blog posts: create, customise, delete'"
+                [cardIcon]="'article'"
+                [routerLink]="'manage-blogs'"
+                ></app-dashboard-card>
+            <!-- Card 01 -->
+            <app-dashboard-card [cardTitle]="'Statistics'"
+                [cardSubTitle]="'View detailed statistics about the use and users of your website'"
+                [cardIcon]="'analytics'"></app-dashboard-card>
+        </div>
+    </div>
+</div>

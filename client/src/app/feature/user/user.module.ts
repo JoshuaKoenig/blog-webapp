@@ -6,7 +6,7 @@ import { TopicDetailComponent } from './pages/topic-detail/topic-detail.componen
 import { BlogPostCardComponent } from './components/blog-post-card/blog-post-card.component';
 import { BlogPostDetailsComponent } from './components/blog-post-details/blog-post-details.component';
 import { TopicCardComponent } from './components/topic-card/topic-card.component';
-import { FeatureModule } from '../feature.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,7 @@ import { FeatureModule } from '../feature.module';
   ],
   imports: [
     CommonModule,
+    RouterModule
   ]
 })
 export class UserModule { }

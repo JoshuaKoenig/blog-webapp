@@ -4,6 +4,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { CreatorModule } from './creator/creator.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [],
@@ -11,7 +12,8 @@ import { CreatorModule } from './creator/creator.module';
     CommonModule,
     SharedModule,
     UserModule,
-    CreatorModule
+    CreatorModule,
+    RouterModule
   ],
   exports: [
     NavbarComponent
