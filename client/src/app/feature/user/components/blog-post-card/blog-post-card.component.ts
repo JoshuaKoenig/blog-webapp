@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-blog-post-card',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./blog-post-card.component.scss']
 })
 export class BlogPostCardComponent {
+
+  //
+  @Input() blogPostTitle = ""
+
+  //
+  @Input() blogPostSubtitle = ""
 
 }

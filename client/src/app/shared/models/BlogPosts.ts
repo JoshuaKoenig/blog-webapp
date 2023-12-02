@@ -1,6 +1,7 @@
 export interface BlogPost {
-    id: number,
+    id: string
     title: string,
-    mainImage: string,
-    
+    subTitle: string,
+    content: string,
+    topicId: string
 }

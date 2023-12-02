@@ -1,9 +1,9 @@
 <div class="bg-gray-200 p-4 rounded-lg shadow-lg">
     <div class="flex flex-col justify-items-stretch sm:flex-row gap-4">
         <!--NgFor over Topics-->
-        <div class="text-white text-center flex-grow" *ngFor="let it of [].constructor(3); index as index">
+        <div class="text-white text-center flex-grow" *ngFor="let topic of topics; index as index">
             <div class="py-4 px-8 bg-gray-900">
-                <h3>Topic {{index}}</h3>
+                <h3>{{topic.title}}</h3>
             </div>
             <!--NgFor over Blogs-->
             <div class="bg-gray-600" *ngFor="let it of [].constructor(4); index as index">

@@ -19,7 +19,6 @@
                 </ul>
             </div>
         </div>
-
         <!-- Tab 01 -->
         <div *ngIf="currentTab === 'create'" class="upper-spacing-x2">
             <div>
@@ -34,24 +33,50 @@
                                     class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-secondary sm:text-sm sm:leading-6">
                             </div>
                         </div>
+                        <div>
+                            <label for="blog-post-subtitle"
+                                class="block text-sm font-semibold leading-6 text-gray-900">Blog Post Subtitle</label>
+                            <div class="mt-2.5">
+                                <input formControlName="blogPostSubTitle" type="text" name="blog-post-subtitle"
+                                    id="blog-post-title"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-secondary sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="blog-post-topic" class="block text-sm font-semibold leading-6 text-gray-900">For
+                                Topic</label>
+                            <div class="mt-2.5 relative">
+                                <select formControlName="blogPostTopicId" (ngModelChange)="onChange($event)"
+                                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                                    <option value="" disabled selected>select topic</option>
+                                    <option *ngFor="let topic of topics" [value]="topic.id">{{topic.title}}</option>
+                                </select>
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path d="M10 12l-6-6h12l-6 6z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
                         <div class="sm:col-span-2">
                             <label for="blog-post-content"
                                 class="block text-sm font-semibold leading-6 text-white-900">Blog Post Content</label>
                             <div class="mt-2.5">
-                                <textarea formControlName="blogPostContent" name="blog-post-content" id="blog-post-content" rows="4"
+                                <textarea formControlName="blogPostContent" name="blog-post-content"
+                                    id="blog-post-content" rows="4"
                                     class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-secondary sm:text-sm sm:leading-6"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="mt-8 sm:mt-12">
-                       <!--  <button [disabled]="!addBlogPostForm.valid" type="submit"
-                            class="block w-full rounded-md bg-white px-3.5 py-2.5 border border-gray-300 text-center text-sm font-semibold text-gray-800 shadow-sm enabled:hover:bg-secondary-light enabled:focus-visible:outline enabled:focus-visible:outline-2 enabled:focus-visible:outline-offset-2">Senden</button> -->
+                        <button [disabled]="!addBlogPostForm.valid" type="submit"
+                            class="block w-full rounded-md bg-white px-3.5 py-2.5 border border-gray-300 text-center text-sm font-semibold text-gray-800 shadow-sm enabled:hover:bg-secondary-light enabled:focus-visible:outline enabled:focus-visible:outline-2 enabled:focus-visible:outline-offset-2">Save</button>
                     </div>
                 </form>
             </div>
-
         </div>
-
         <!--Tab 02-->
         <div *ngIf="currentTab === 'manage'" class="upper-spacing-x2">
             <!-- Topic Table -->

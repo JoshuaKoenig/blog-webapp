@@ -15,8 +15,11 @@
         </div>
         <!--TODO: Mobile-->
         <div class="upper-spacing flex flex-row justify-between gap-2">
-            <div class="flex-grow" *ngFor="let it of [].constructor(3); index as index">
-                <app-blog-post-card></app-blog-post-card>
+            <div class="flex-grow" *ngFor="let blogPost of blogPosts; index as index">
+                <app-blog-post-card
+                    [blogPostTitle]="blogPost.title"
+                    [blogPostSubtitle]="blogPost.subTitle"
+                ></app-blog-post-card>
             </div>
         </div>
     </div>
