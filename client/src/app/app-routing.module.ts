@@ -44,7 +44,15 @@ const routes: Routes = [
         component: ManageBlogPostsComponent
       }
     ]
-  }
+  },
+  {
+    path: "topics/:id",
+    component: TopicDetailComponent
+  },
+  {
+    path: "**",
+    component: HomeComponent
+  },
 
 ];
 

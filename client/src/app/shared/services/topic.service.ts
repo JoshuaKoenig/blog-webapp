@@ -1,8 +1,9 @@
 import { Injectable, signal } from '@angular/core';
 import { getApp, getApps, initializeApp } from 'firebase/app';
-import { addDoc, collection, doc, getFirestore, onSnapshot, setDoc } from 'firebase/firestore';
+import { addDoc, arrayUnion, collection, doc, getDoc, getFirestore, onSnapshot, setDoc, updateDoc } from 'firebase/firestore';
 import { environment } from 'src/environments/environment.development';
 import { Topic } from '../models/Topic';
+import { BlogPost } from '../models/BlogPosts';
 
 @Injectable({
   providedIn: 'root'
@@ -28,18 +29,19 @@ export class TopicService {
   private topicCollection = collection(this.firestore, "topics");
 
   constructor() {
-      //
-      onSnapshot(this.topicCollection, (snapshot) => {
-        let daten:Topic[] = [];
-        snapshot.forEach((doc) => {
-          daten.push(doc.data() as Topic);
-        });
-        this.topics.set(daten);
-        console.log(this.topics())
-      })
-   }
+    //
+    onSnapshot(this.topicCollection, (snapshot) => {
+      let daten: Topic[] = [];
+      snapshot.forEach((doc) => {
+        daten.push(doc.data() as Topic);
+      });
+      this.topics.set(daten);
+      console.log(this.topics())
+    })
+  }
 
-   public async addTopic(newTopic: Topic) {
+  //
+  public async addTopic(newTopic: Topic) {
     try {
       const docRef = await addDoc(collection(this.firestore, 'topics'), newTopic);
       newTopic.id = docRef.id
@@ -48,5 +50,24 @@ export class TopicService {
     } catch (e) {
       console.error("Fehler beim Hinzufügen des Dokuments: ", e);
     }
+  }
+
+  //
+  public async addBlogPostToTopic(blogPostId: string, topicId: string) {
+    try {
+      const docRef = doc(this.firestore, 'topics', topicId);
+      await updateDoc(docRef, { blogPostIds: arrayUnion(blogPostId) });
+      console.log("Dokument erfolgreich aktualisiert mit ID: ", docRef.id);
+    } catch (e) {
+      console.error("Fehler beim Aktualisieren des Dokuments: ", e);
+    }
+  }
+
+
+  //
+  public getTopic(topicId: string) : Topic
+  {
+    let topic = this.topics().find(topic => topic.id === topicId)
+    return topic ? (topic) : ({id: "", title:"", blogPostIds:[]})
   }
 }

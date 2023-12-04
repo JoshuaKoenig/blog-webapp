@@ -14,8 +14,8 @@
             <h3>Recent Blogs</h3>
         </div>
         <!--TODO: Mobile-->
-        <div class="upper-spacing flex flex-row justify-between gap-2">
-            <div class="flex-grow" *ngFor="let blogPost of blogPosts; index as index">
+        <div [ngClass]="{'justify-between':blogPosts.length >= 3, 'justify-start':blogPosts.length<3}" class="upper-spacing flex flex-row gap-2">
+            <div class="w-96" *ngFor="let blogPost of blogPosts.slice(0, 3); index as index">
                 <app-blog-post-card
                     [blogPostTitle]="blogPost.title"
                     [blogPostSubtitle]="blogPost.subTitle"

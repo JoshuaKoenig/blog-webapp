@@ -6,9 +6,16 @@
                 <h3>{{topic.title}}</h3>
             </div>
             <!--NgFor over Blogs-->
-            <div class="bg-gray-600" *ngFor="let it of [].constructor(4); index as index">
-                <div class="p-4 px-8 my-2 hover:bg-gray-400">
-                    <h3>Blog Post {{index}}</h3>
+            <div *ngIf="topic.blogPostIds.length > 0">
+                <div class="bg-gray-600" *ngFor="let blogId of topic.blogPostIds; index as index">
+                    <div class="p-4 px-8 my-2 hover:bg-gray-400">
+                        <h3>{{getBlogTitleForId(blogId)}}</h3>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="topic.blogPostIds.length === 0" class="bg-gray-600 opacity-30">
+                <div class="p-4 px-8 my-2">
+                    <h3>No blog posts yet</h3>
                 </div>
             </div>
         </div>
